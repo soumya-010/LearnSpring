@@ -1,0 +1,33 @@
+<!-- Add Reference to Spring because XML won't otherwise understand subsequent things' -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="mobile" class="com.soumya.SpringStarterDemo.Mobile" autowire="byType">
+		<property name="callId" value="1"></property>
+		<property name="company" value="Apple"></property>
+	</bean>
+	
+	<!-->
+	<bean id="mobile" class="com.soumya.SpringStarterDemo.Mobile">
+		<constructor-arg index="0" value="1"/>
+		<constructor-arg index="1" value="Apple"/>
+		<constructor-arg index="2" ref="tablet" />
+	</bean>		
+	<-->
+	
+	<bean id="tab" class="com.soumya.SpringStarterDemo.Tablet" scope="singleton" primary="true">
+		<property name="callId" value="2"/>
+		<property name="company" value="AppleTech"/>
+	</bean>
+	
+	<bean id="galaxy" class="com.soumya.SpringStarterDemo.Tablet" scope="singleton" lazy-init="true">
+		<property name="callId" value="3"/>
+		<property name="company" value="AppleTech"/>
+	</bean>
+
+
+</beans>
+
